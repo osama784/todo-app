@@ -46,7 +46,7 @@ Serve the folder with any static server and open `index.html`, for example:
 python -m http.server 5500
 ```
 
-Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the API URL hardcoded in `static/js/*.js`; change those URLs to point at your own backend instance if needed.
+Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the API URL hardcoded in `static/js/*.js` (defaults to `http://127.0.0.1:8000`); change those URLs to point at your own backend instance if needed.
 
 ### Hope you love it ❤️
 

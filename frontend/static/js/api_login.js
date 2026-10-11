@@ -3,7 +3,7 @@ let LoginUser = (username, password) => {
     username: username.value,
     password: password.value,
   };
-  fetch("https://osamaTasks.pythonanywhere.com/users/login/", {
+  fetch("http://127.0.0.1:8000/users/login/", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -37,7 +37,7 @@ let LoginUser = (username, password) => {
 };
 
 let GetUser = () => {
-  fetch("https://osamaTasks.pythonanywhere.comusers/", {
+  fetch("http://127.0.0.1:8000/users/", {
     headers: {
       "Content-type": "application/json",
       Authorization: `Token ${localStorage.getItem("token")}`,

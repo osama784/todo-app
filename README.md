@@ -61,7 +61,7 @@ cd frontend
 python -m http.server 5500
 ```
 
-Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the API URL hardcoded in `frontend/static/js/*.js`; change those URLs to point at your own backend instance if needed.
+Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the API URL hardcoded in `frontend/static/js/*.js` (defaults to `http://127.0.0.1:8000`); change those URLs to point at your own backend instance if needed.
 
 ## Features
 
@@ -114,7 +114,7 @@ This is a learning/portfolio project:
 - Development settings are committed (`DEBUG = True`, generated secret key) — not production-ready.
 - `backend/requirements.txt` is UTF-16 encoded — re-save it as UTF-8 if `pip install -r` complains.
 - The test files are Django placeholders; there is no test suite.
-- The API URL is hardcoded in `frontend/static/js/*.js` — point it at your own backend instance.
+- The API URL is hardcoded in `frontend/static/js/*.js` (defaults to `http://127.0.0.1:8000`) — point it at your own backend instance if it runs elsewhere.
 
 ---
 

@@ -129,7 +129,7 @@ let ShowTaskList = () => {
   tasks_wrapper.innerHTML = "";
   // to reAdd the listeners
 
-  endpoint = `https://osamaTasks.pythonanywhere.com/tasks/?q_category=${q_category}&q_done=${q_done}`;
+  endpoint = `http://127.0.0.1:8000/tasks/?q_category=${q_category}&q_done=${q_done}`;
   fetch(endpoint, {
     headers: {
       "Content-type": "application/json",
@@ -408,7 +408,7 @@ let CreateTask = (name, description, category) => {
     };
   }
 
-  fetch("https://osamaTasks.pythonanywhere.com/tasks/create/", {
+  fetch("http://127.0.0.1:8000/tasks/create/", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -561,7 +561,7 @@ let UpdateTask = (name, description, category) => {
     };
   }
   fetch(
-    `https://osamaTasks.pythonanywhere.com/tasks/${current_task_id}/update/`,
+    `http://127.0.0.1:8000/tasks/${current_task_id}/update/`,
     {
       method: "PUT",
       headers: {
@@ -655,7 +655,7 @@ let UpdateTask = (name, description, category) => {
 let DeleteTask = () => {
   let current_status;
   fetch(
-    `https://osamaTasks.pythonanywhere.com/tasks/${current_task_id}/delete/`,
+    `http://127.0.0.1:8000/tasks/${current_task_id}/delete/`,
     {
       method: "DELETE",
       headers: {
@@ -682,7 +682,7 @@ let DoTask = (done) => {
     is_done: done,
   };
   fetch(
-    `https://osamaTasks.pythonanywhere.com/tasks/${current_task_id}/update/`,
+    `http://127.0.0.1:8000/tasks/${current_task_id}/update/`,
     {
       method: "PATCH",
       headers: {
@@ -697,7 +697,7 @@ let DoTask = (done) => {
 };
 
 let ShowCategoryList = () => {
-  fetch("https://osamaTasks.pythonanywhere.com/tasks/categories/", {
+  fetch("http://127.0.0.1:8000/tasks/categories/", {
     headers: {
       "Content-type": "application/json",
       Authorization: `Token ${localStorage.getItem("token")}`,
@@ -776,7 +776,7 @@ let CreateCategory = () => {
   let information = {
     name: categoryForm.name.value,
   };
-  fetch(`https://osamaTasks.pythonanywhere.com/tasks/categories/create/`, {
+  fetch(`http://127.0.0.1:8000/tasks/categories/create/`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -887,7 +887,7 @@ let CreateCategory = () => {
 
 let DeleteCategory = () => {
   fetch(
-    `https://osamaTasks.pythonanywhere.com/tasks/categories/${current_category_id}/delete/`,
+    `http://127.0.0.1:8000/tasks/categories/${current_category_id}/delete/`,
     {
       method: "DELETE",
       headers: {
@@ -915,7 +915,7 @@ let UpdateCategory = (categoryName) => {
     name: categoryName,
   };
   fetch(
-    `https://osamaTasks.pythonanywhere.com/tasks/categories/${current_category_id}/update/`,
+    `http://127.0.0.1:8000/tasks/categories/${current_category_id}/update/`,
     {
       method: "PUT",
       headers: {
