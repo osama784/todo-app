@@ -1,20 +1,80 @@
-# TO DO — Backend
+# To-Do App
 
-The REST API backend for a simple to-do app, built with **Django** and **Django REST Framework**. Users register and log in with token authentication, then manage their own tasks and categories.
+A full-stack to-do app: a **Django REST API** backend and a **vanilla JavaScript** frontend.
 
-- **Frontend:** [osama784/Frontend_TO_DO](https://github.com/osama784/Frontend_TO_DO)
-- **Live demo:** [to-do-six-coral.vercel.app](https://to-do-six-coral.vercel.app) (the frontend; the API also runs separately on PythonAnywhere)
+- **Live demo (frontend):** [to-do-six-coral.vercel.app](https://to-do-six-coral.vercel.app)
+- **API:** [osamaTasks.pythonanywhere.com](https://osamaTasks.pythonanywhere.com) (the backend, deployed separately on PythonAnywhere)
+
+## Structure
+
+| Folder | What's inside |
+|--------|---------------|
+| `backend/` | Django 5.0.2 + Django REST Framework — token auth, tasks and categories |
+| `frontend/` | Plain HTML, CSS and JavaScript — no framework, no build step |
 
 ## Stack
 
+**Backend**
+
 - **Django 5.0.2**, **Django REST Framework 3.15.1**, **django-cors-headers 4.3.1**
 - **Token authentication** (`rest_framework.authtoken`), plus session auth for the browsable API
-- **SQLite** for development (`db.sqlite3` is committed)
-- Dependencies are pinned in `requirements.txt` (the file is UTF-16 encoded — re-save it as UTF-8 if `pip install -r` complains)
+- **SQLite** for development (`backend/db.sqlite3` is committed)
+- Dependencies are pinned in `backend/requirements.txt` (the file is UTF-16 encoded — re-save it as UTF-8 if `pip install -r` complains)
+
+**Frontend**
+
+- Plain **HTML, CSS and JavaScript** — no framework, no build step
+- Font Awesome is vendored locally (`frontend/static/all.min.css` + `frontend/webfonts/`); the Cairo font is loaded from Google Fonts
+- `fetch` calls the backend with token authentication; the token is stored in `localStorage`
+
+## Quick start
+
+### Backend
+
+```bash
+cd backend
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python manage.py migrate
+python manage.py runserver
+```
+
+The API is then available at `http://127.0.0.1:8000/`, with Django admin at `/admin/` (create a superuser with `python manage.py createsuperuser`).
+
+> [!NOTE]
+> `backend/requirements.txt` is UTF-16 encoded — re-save it as UTF-8 if `pip install -r` complains.
+
+Example request once you have a token:
+
+```bash
+curl -H "Authorization: Token <your-token>" http://127.0.0.1:8000/tasks/
+```
+
+### Frontend
+
+Serve `frontend/` with any static server and open `index.html`, for example:
+
+```bash
+cd frontend
+python -m http.server 5500
+```
+
+Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the deployed API URL hardcoded in `frontend/static/js/*.js`; change those URLs to point at your own backend instance if needed.
+
+## Features
+
+- **Sign up / log in** (`frontend/signUp.html`, `frontend/login.html`) with client-side validation matching the backend rules (required fields, `@gmail.com` email, password of at least 8 characters); registration returns an auth token
+- **Tasks CRUD:** create, edit, delete, and mark tasks as done or not done
+- **Categories:** create, rename, delete, and assign categories to tasks; each category shows its task count, and the sidebar can filter tasks by category
+- **Filters:** All Tasks / Done Tasks / New Tasks
+- **Token authentication:** all task/category endpoints require auth and are scoped to the logged-in user
 
 ## API overview
 
-All endpoints were verified against the code in `tasks/`, `users/` and `api/`.
+All endpoints were verified against the code in `backend/tasks/`, `backend/users/` and `backend/api/`.
 
 ### Auth and users — `/users/`
 
@@ -48,33 +108,14 @@ A task has a `name`, `body`, optional `category`, `is_done` flag, and creation d
 
 There is also `GET /api/` returning a small route index. All task/category endpoints require authentication and are scoped to the logged-in user.
 
-## How to run
-
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-
-pip install -r requirements.txt
-
-python manage.py migrate
-python manage.py runserver
-```
-
-The API is then available at `http://127.0.0.1:8000/`, with Django admin at `/admin/` (create a superuser with `python manage.py createsuperuser`).
-
-Example request once you have a token:
-
-```bash
-curl -H "Authorization: Token <your-token>" http://127.0.0.1:8000/tasks/
-```
-
 ## Current state (honest notes)
 
 This is a learning/portfolio project:
 
 - Development settings are committed (`DEBUG = True`, generated secret key) — not production-ready.
+- `backend/requirements.txt` is UTF-16 encoded — re-save it as UTF-8 if `pip install -r` complains.
 - The test files are Django placeholders; there is no test suite.
-- The deployed frontend calls the API at `https://osamaTasks.pythonanywhere.com` (hardcoded in the frontend's JS).
+- The deployed frontend calls the API at `https://osamaTasks.pythonanywhere.com` (hardcoded in `frontend/static/js/*.js`).
 
 ---
 
