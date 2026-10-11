@@ -1,6 +1,6 @@
-# Frontend_TO_DO
+# Frontend — To-Do App
 
-Frontend for the [Backend Code](https://github.com/osama784/Backend_TO_DO).
+Frontend for the [Backend Code](https://github.com/osama784/todo-app).
 
 ## What is the purpose of the project?
 
