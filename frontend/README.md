@@ -6,9 +6,9 @@ Frontend for the [Backend Code](https://github.com/osama784/todo-app).
 
 Allow the user to create, update, delete their daily tasks and mark them as completed — with categories to organize them.
 
-## Live demo
+## Deployment
 
-[to-do-six-coral.vercel.app](https://to-do-six-coral.vercel.app) — the frontend is deployed there and talks to the API at `https://osamaTasks.pythonanywhere.com`.
+No live deployment — run it locally (see below).
 
 ## Stack
 
@@ -46,7 +46,7 @@ Serve the folder with any static server and open `index.html`, for example:
 python -m http.server 5500
 ```
 
-Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the deployed API URL hardcoded in `static/js/*.js`; change those URLs to point at your own backend instance if needed.
+Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the API URL hardcoded in `static/js/*.js`; change those URLs to point at your own backend instance if needed.
 
 ### Hope you love it ❤️
 

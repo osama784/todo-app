@@ -2,8 +2,7 @@
 
 A full-stack to-do app: a **Django REST API** backend and a **vanilla JavaScript** frontend.
 
-- **Live demo (frontend):** [to-do-six-coral.vercel.app](https://to-do-six-coral.vercel.app)
-- **API:** [osamaTasks.pythonanywhere.com](https://osamaTasks.pythonanywhere.com) (the backend, deployed separately on PythonAnywhere)
+No live deployment — run the backend and frontend locally (see below).
 
 ## Structure
 
@@ -62,7 +61,7 @@ cd frontend
 python -m http.server 5500
 ```
 
-Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the deployed API URL hardcoded in `frontend/static/js/*.js`; change those URLs to point at your own backend instance if needed.
+Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the API URL hardcoded in `frontend/static/js/*.js`; change those URLs to point at your own backend instance if needed.
 
 ## Features
 
@@ -115,7 +114,7 @@ This is a learning/portfolio project:
 - Development settings are committed (`DEBUG = True`, generated secret key) — not production-ready.
 - `backend/requirements.txt` is UTF-16 encoded — re-save it as UTF-8 if `pip install -r` complains.
 - The test files are Django placeholders; there is no test suite.
-- The deployed frontend calls the API at `https://osamaTasks.pythonanywhere.com` (hardcoded in `frontend/static/js/*.js`).
+- The API URL is hardcoded in `frontend/static/js/*.js` — point it at your own backend instance.
 
 ---
 
