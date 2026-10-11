@@ -1,17 +1,55 @@
 # Frontend_TO_DO
 
-frontend app for the [Backend Code](https://github.com/osama784/Backend_TO_DO).
+Frontend for the [Backend Code](https://github.com/osama784/Backend_TO_DO).
 
 ## What is the purpose of the project?
 
-Allow the user to create, update, delete their daily tasks and mark them as completed.
+Allow the user to create, update, delete their daily tasks and mark them as completed — with categories to organize them.
+
+## Live demo
+
+[to-do-six-coral.vercel.app](https://to-do-six-coral.vercel.app) — the frontend is deployed there and talks to the API at `https://osamaTasks.pythonanywhere.com`.
+
+## Stack
+
+Plain **HTML, CSS and JavaScript** — no framework, no build step.
+
+- Font Awesome is vendored locally (`static/all.min.css` + `webfonts/`)
+- The Cairo font is loaded from Google Fonts
+- `fetch` calls the backend with token authentication; the token is stored in `localStorage`
 
 > [!NOTE] <br/>
 >
 > You don't have to install any third-party packages.
 
+## Features
+
+- **Sign up / log in** (`signUp.html`, `login.html`) with client-side validation matching the backend rules (required fields, `@gmail.com` email, password of at least 8 characters)
+- **Dashboard** (`index.html`) listing the user's tasks with filters: All Tasks / Done Tasks / New Tasks
+- **Task actions:** create, edit, delete, and mark tasks as done or not done
+- **Categories:** create, rename, delete, and assign categories to tasks; each category shows its task count, and the sidebar can filter tasks by category
+
+## Files
+
+- `index.html` — main dashboard
+- `login.html`, `signUp.html` — authentication pages
+- `static/js/api.js` — tasks and categories API calls
+- `static/js/api_login.js`, `static/js/api_sign.js` — auth API calls
+- `static/js/main.js`, `login.js`, `sign.js` — UI logic and form validation
+- `static/styles/`, `static/images/` — styles and assets
+
+## Run locally
+
+Serve the folder with any static server and open `index.html`, for example:
+
+```bash
+python -m http.server 5500
+```
+
+Then visit `http://127.0.0.1:5500/index.html` (VS Code's Live Server on port 5500 also works). The pages call the deployed API URL hardcoded in `static/js/*.js`; change those URLs to point at your own backend instance if needed.
+
 ### Hope you love it ❤️
 
 <hr/>
 
-You could visit [My Website](https://portfolio-osama784s-projects.vercel.app)👌
+You could visit [My Website](https://osamadoage.vercel.app) 👌
